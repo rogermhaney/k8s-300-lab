@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Demo Web Server Container</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="./static/favicon.png?v=1.0">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-card" style="background-color:#89CFF0">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="{{base_url}}/index" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="{{base_url}}/entry" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DB Entry</a>
+    <a href="{{base_url}}/dbview" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DB View</a>
+    <a href="{{base_url}}/admin" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Admin</a>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-blue w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block #f9a61a w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="{{base_url}}/entry" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">DB Entry</a>
+  <a href="{{base_url}}/dbview" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">DB View</a>
+  <a href="{{base_url}}/admin" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Admin</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The Home Section -->
+  <div class="w3-container w3-content w3-center w3-padding-32" style="max-width:800px">
+    <h2 class="w3-wide">Web Server Demo Container</h2>
+    <img src="./static/CDWlogo.png" style="width:20%">
+    <p class="w3-opacity"><i>UI service for sample demo app</i></p>
+  </div>
+
+  <!-- Database View Tasks -->
+  <div class="w3-container w3-content w3-padding-32" style="max-width:1200px; color: black; background-color:#89CFF0">
+    <h2 class="w3-wide w3-center">Customer List:</h2>
+    <table style="width:100%; color: black; background-color:#89CFF0">
+      <tr>
+        <th style="text-align: center; border: 2px solid #89CFF0;">First Name</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">Last Name</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">Address</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">City</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">State</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">Zip Code</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">Email</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">Phone</th>
+        <th style="text-align: center; border: 2px solid #89CFF0;">Company</th>
+      </tr>
+      {% for dict_item in data %}
+        <tr style="background-color: ghostwhite;">
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.First_Name }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.Last_Name }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.Address }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.City }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.State }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.Zip }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.Email }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.Phone }}</td>
+          <td style="text-align: left; border: 2px solid #ffffff;">{{ dict_item.Company }}</td>
+      {% endfor %}
+    </table>
+</div>
+
+<!-- Back to Home Page-->
+<div class="w3-container w3-content w3-padding-32" style="max-width:1200px; background-color:#89CFF0">
+  <div class="w3-container w3-padding-16 w3-cell w3-center w3-light-grey w3-border w3-border-black w3-round-xxlarge">
+      <a href="{{base_url}}/index" style="color: black;">Return to Home page</a>
+  </div>
+</div>
+
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-16 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <a href="https://www.facebook.com/rogermhaney/" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+  <a href="https://instagram.com/rogermhaney/" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+  <a href="https://twitter.com/rebreatherpilot/" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+  <a href="https://www.linkedin.com/in/rogerhaney/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3schools</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+</script>
+
+</body>
+</html>
