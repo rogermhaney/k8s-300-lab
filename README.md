@@ -34,29 +34,29 @@ The container output of the docker build run must be versioned and moved into a 
 ### Full build of all four containers locally
 
 Use --no-cache or not depending on your circumstances.
-```
-docker build --no-cache -f Dockerfile_web -t username_container_web:v1.0 --build-arg APP_PORT=9999 .
-docker build --no-cache -f Dockerfile_db -t username_container_db:v1.0 --build-arg API_PORT=8888 .
-```
-
-### Run containers after building locally
-
-```
-docker run -p 9999:9999 --env VAR1=value1 --env VAR2=value2 jdoe_container_web:v1.0
-docker run -p 8888:8888 --env VAR1=value1 --env VAR2=value2 jdoe_container_db:v1.0
-````
-NOTE: You must specify the environmental variables when launcing the containers to get the containers to run. The enviromental variables required are:
-    For Web server:
-        APP_NAME = "" # what you want your app called
-        APP_ACCESS = "" # http or https (use http)
-        APP_URL = "" # DNS name or IP Address of web server service
-        APP_PORT = "" # TCP port to access of web server service
-        API_ACCESS = "" # http or https (use http)
-        API_URL = "" # DNS name or IP Address of api/db server service
-        API_PORT = "" # TCP port to access of api/db server service
-    For API/DB server:
-        API_PORT = "" # TCP port to access of api/db server service
+```  
+docker build --no-cache -f Dockerfile_web -t username_container_web:v1.0 --build-arg APP_PORT=9999 .  
+docker build --no-cache -f Dockerfile_db -t username_container_db:v1.0 --build-arg API_PORT=8888 .  
+```  
   
+### Run containers after building locally  
+  
+```  
+docker run -p 9999:9999 --env VAR1=value1 --env VAR2=value2 jdoe_container_web:v1.0  
+docker run -p 8888:8888 --env VAR1=value1 --env VAR2=value2 jdoe_container_db:v1.0  
+````  
+NOTE: You must specify the environmental variables when launcing the containers to get the containers to run. The enviromental variables required are:  
+    For Web server:  
+        APP_NAME = "" # what you want your app called  
+        APP_ACCESS = "" # http or https (use http)  
+        APP_URL = "" # DNS name or IP Address of web server service  
+        APP_PORT = "" # TCP port to access of web server service  
+        API_ACCESS = "" # http or https (use http)  
+        API_URL = "" # DNS name or IP Address of api/db server service  
+        API_PORT = "" # TCP port to access of api/db server service  
+    For API/DB server:  
+        API_PORT = "" # TCP port to access of api/db server service  
+   
 ## Run containers after building in K8s cluster  
   
 ### DNS responds to service.namespace.svc.cluster.local API server - Therefore, requires this server to be running before use!  
